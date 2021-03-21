@@ -17,8 +17,8 @@ describe('Bookish application', () => {
     beforeEach(() => {
         const books = [
             { 'name': 'Refactoring', 'id': 1 },
-            { 'noame': 'Domain-driven design', 'id': 2 }
-            { 'noame': 'Building Microservices', 'id': 3 }
+            { 'noame': 'Domain-driven design', 'id': 2 },
+            { 'name': 'Building Microservices', 'id': 3 }
         ]
 
         return books.map(item => 
