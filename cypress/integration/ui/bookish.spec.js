@@ -43,4 +43,10 @@ describe('Bookish application', () => {
             expect(titles).to.deep.equal(['Refactoring', 'Domain-driven design', 'Building Microservices'])
         })
     })
+
+    it('Goes to the detail page', () => {
+        cy.visit('http://localhost:3000');
+        cy.get('div.book-item').contains('View Details').eq(0).click();
+        cy.url().should('include', 'books/1');
+    })
 })
