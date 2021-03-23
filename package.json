@@ -22,7 +22,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "e2e": "cypress run",
-    "stub-server": "cd stub-server && json-server --watch db.json --port 8080",
+    "stub-server": "cd stub-server && json-server --watch books.json --port 8080",
     "node-server": "cd stub-server && node server.js"
   },
   "eslintConfig": {
