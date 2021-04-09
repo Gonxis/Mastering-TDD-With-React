@@ -54,6 +54,7 @@ describe('BookList', () => {
         expect(description.innerHTML).toEqual(props.book.name);
     })
 
+    /*
     it('show *more* link when description is too long', () => {
         const props = {
             book: {
@@ -70,4 +71,5 @@ describe('BookList', () => {
         expect(link.innerHTML).toEqual('Show more');
         expect(title.innerHTML).toEqual('The book about how to do refactoring ....');
     })
+    */
 });
