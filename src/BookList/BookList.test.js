@@ -41,35 +41,4 @@ describe('BookList', () => {
         const titles = [...container.querySelectorAll('h2')].map(x => x.innerHTML);
         expect(titles).toEqual(['Refactoring', 'Domain-driven design']);
     })
-
-    it('displays the book name when no description was given', () => {
-        const props = {
-            book: {
-                name: 'Refactoring'
-            }
-        }
-        const { container } = renderWithRouter(<BookDetail {...props} />);
-
-        const description = container.querySelector('p.book-description');
-        expect(description.innerHTML).toEqual(props.book.name);
-    })
-
-    /*
-    it('show *more* link when description is too long', () => {
-        const props = {
-            book: {
-                name: 'Refactoring',
-                description: 'The book about how to do refactoring ....'
-            }
-        };
-
-        const { container } = render(<BookDetail {...props} />);
-
-        const link = container.querySelector('a.show-more');
-        const title = container.querySelector('p.book-description');
-
-        expect(link.innerHTML).toEqual('Show more');
-        expect(title.innerHTML).toEqual('The book about how to do refactoring ....');
-    })
-    */
 });

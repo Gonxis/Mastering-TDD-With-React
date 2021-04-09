@@ -3,6 +3,14 @@ import { render } from '@testing-library/react';
 
 import BookDetail from "./BookDetail";
 
+import { MemoryRouter as Router } from 'react-router-dom';
+
+const renderWithRouter = (component) => {
+    return {...render(<Router>
+        {component}
+    </Router>)}
+};
+
 describe('BookDetail', () => {
     it('renders title', () => {
         const props = {
@@ -11,7 +19,7 @@ describe('BookDetail', () => {
             }
         };
 
-        const { container } = render(<BookDetail {...props} />);
+        const { container } = renderWithRouter(<BookDetail {...props} />);
 
         const title = container.querySelector('.book-title');
         expect(title.innerHTML).toEqual(props.book.name);
@@ -25,9 +33,40 @@ describe('BookDetail', () => {
             }
         };
 
-        const { container } = render(<BookDetail {...props} />);
+        const { container } = renderWithRouter(<BookDetail {...props} />);
 
         const description = container.querySelector('p.book-description');
         expect(description.innerHTML).toEqual(props.book.description);
     })
+
+    it('displays the book name when no description was given', () => {
+        const props = {
+            book: {
+                name: 'Refactoring'
+            }
+        }
+        const { container } = renderWithRouter(<BookDetail {...props} />);
+
+        const description = container.querySelector('p.book-description');
+        expect(description.innerHTML).toEqual(props.book.name);
+    })
+
+    /*
+    it('show *more* link when description is too long', () => {
+        const props = {
+            book: {
+                name: 'Refactoring',
+                description: 'The book about how to do refactoring ....'
+            }
+        };
+
+        const { container } = render(<BookDetail {...props} />);
+
+        const link = container.querySelector('a.show-more');
+        const title = container.querySelector('p.book-description');
+
+        expect(link.innerHTML).toEqual('Show more');
+        expect(title.innerHTML).toEqual('The book about how to do refactoring ....');
+    })
+    */
 });
