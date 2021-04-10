@@ -4,6 +4,8 @@ import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import axios from 'axios';
 
+import * as types from '../types';
+
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 
@@ -11,7 +13,7 @@ describe('BookListContainer related actions', () => {
     it('Sets the search keyword', () => {
         const term = '';
         const expected = {
-            type: 'SET_SEARCH_TERM',
+            type: types.SET_SEARCH_TERM,
             term
         }
         const action = setSearchTerm(term);
@@ -28,8 +30,8 @@ describe('BookListContainer related actions', () => {
             .mockImplementation(() => Promise.resolve({ data: books }));
         
         const expectedActions = [
-            { type: 'FETCH_BOOKS_PENDING' },
-            { type: 'FETCH_BOOKS_SUCCESS', books },
+            { type: types.FETCH_BOOKS_PENDING },
+            { type: types.FETCH_BOOKS_SUCCESS, books },
         ];
         const store = mockStore({ books: [] });
 
@@ -46,8 +48,8 @@ describe('BookListContainer related actions', () => {
             );
         
         const expectedActions = [
-            { type: 'FETCH_BOOKS_PENDING' },
-            { type: 'FETCH_BOOKS_FAILED', err: 'Something went wrong' },
+            { type: types.FETCH_BOOKS_PENDING },
+            { type: types.FETCH_BOOKS_FAILED, err: 'Something went wrong' },
         ];
         const store = mockStore({ books: [] });
 
