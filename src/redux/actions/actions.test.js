@@ -1,4 +1,4 @@
-import { setSearchTerm } from './actions';
+import { setSearchTerm, fetchBooks } from './actions';
 
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
